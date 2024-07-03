@@ -139,7 +139,6 @@ def predict(data: ForestData):
 @app.get("/model")
 async def get_answer_endpoint(question: str = Query(..., description="La question pour laquelle vous souhaitez obtenir une réponse")):
     api_key = os.getenv("OPENAI_API_KEY") 
-    # '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'
     return get_answer_from_openai(question, api_key)
 
 
