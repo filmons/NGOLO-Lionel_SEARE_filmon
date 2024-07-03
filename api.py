@@ -12,7 +12,7 @@ import numpy as np
 from functions import get_answer_from_openai
 from typing import Optional
 from pydantic import BaseModel
-
+import os
 
 tags_metadata = [
     {
@@ -138,9 +138,8 @@ def predict(data: ForestData):
 
 @app.get("/model")
 async def get_answer_endpoint(question: str = Query(..., description="La question pour laquelle vous souhaitez obtenir une réponse")):
-    # clé 1 : sk-proj-GVuWMwZy3SC88FP2nMy2T3BlbkFJRRyEqTiusLQ2ljkKLPCk : error 401 Unauthorized
-    # clé 2 : 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 : error 404
-    api_key = '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'
+    api_key = os.getenv("OPENAI_API_KEY") 
+    # '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'
     return get_answer_from_openai(question, api_key)
 
 
