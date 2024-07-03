@@ -1,0 +1,9 @@
+pydantic
+fastapi
+requests
+streamlit
+typing
+numpy
+pandas
+scikit-learn
+tensorflow==2.15.0
